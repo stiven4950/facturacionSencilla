@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block section %}
+
+<style>.errorlist{color:red;}</style>
+
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-6 mx-auto mb-5 register">
+
+        <div class="float-circle d-block mx-auto"><img src="{% static 'core/img/logo.png' %}"/></div>
+
+        {% if 'registered' in request.GET %}
+          <p style='color:green;' class="text-center"> Usuario registrado correctamente, ya puedes identificarte. </p>
+        {% endif %}
+
+        <form action="" method="post" id="login-form">{% csrf_token %}
+          <h2 class="mb-5 text-center"><b>Iniciar sesión</b></h2>
+          
+            <div class="md-form">
+              <i class="fas fa-user prefix"></i>
+              <input type="text" name="username" id="id_username" class="form-control" maxlength="254" required/>
+              <label for="id_username">Nombre de usuario</label>
+            </div>
+            
+            <div class="md-form">
+              <i class="fas fa-lock prefix"></i>
+              <input type="password" name="password" id="id_password" class="form-control validate" required/>
+              <label for="id_password" data-error="Contraseña inválida">Contraseña</label>
+            </div>
+            
+          {% if form.non_field_errors %}
+            <p class="text-center" style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+          {% endif %}
+          <p>
+            <button type="submit" class="btn peach-gradient btn-rounded waves-effect mx-auto d-block">Acceder</button>
+          </p>
+        </form>
+        <p style="text-align:center;"> ¿Has olvidado tu clave? Puedes restaurarla <a href="{% url 'password_reset' %}">aquí </a> </p>
+
+        <p style="text-align:center;"> ¿No tienes una cuenta?</p>
+        <button type="button" onclick="window.location.href='{% url 'signup' %}'" class="btn btn-outline-amber darken-3 btn-rounded waves-effect mx-auto d-block">
+          Regístrate
+        </button>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

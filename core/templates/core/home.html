@@ -1,0 +1,91 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block section %}
+
+    <!--Carousel Wrapper-->
+  <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <div class="view">
+          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+            alt="First slide">
+          <div class="mask rgba-black-light"></div>
+        </div>
+        <div class="carousel-caption">
+
+          {% if orders|length > 1 %}
+            <h3 class="h3-responsive">Puedes ver las facturas que has generado</h3>
+            <p>Si has generado facturas, podrás visualizar el listado</p>
+
+          {% else %}
+            <h3 class="h3-responsive">No tienes facturas</h3>
+            <p>Puedes registrar tus productos y generar la factura</p>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+
+
+
+
+
+
+
+  <!-- TARJETAS -->
+<div class="m-3">
+
+    <div class="row row-cols-2 row-cols-md-4">
+      {% for order in orders %}
+        <div class="col mb-4">
+          <div class="card">
+            <div class="view overlay">
+              <img class="card-img-top" src="https://static.vecteezy.com/system/resources/previews/000/350/512/non_2x/invoice-vector-icon.jpg"
+                alt="Card image cap"/>
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Factura: {{order.start_date|date:"SHORT_DATE_FORMAT"}}--{{order.start_date|date:"TIME_FORMAT"}}</h5>
+              <p class="card-text">Código de referecia: {{order.ref_code}}</p>
+
+              <button type="button" onclick="window.location.href='{% url 'product:orderdetail' order.pk %}'" class="btn peach-gradient btn-rounded waves-effect mx-auto d-block">
+                Ver detalle
+              </button>
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{% static 'core/js/main.js' %}"> </script>
+{% endblock %}

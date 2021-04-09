@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Perfil{% endblock %}
+{% block section %}
+<style>.errorlist{color:red;}</style>
+  <div class="container">
+    <div class="row mt-3">
+
+      <div class="col-md-6 mx-auto mb-5 register">
+      
+          <form action="" method="post" id="login-form" enctype="multipart/form-data">{% csrf_token %}
+
+            <div class="float-circle d-block mx-auto vertical-center">
+              {% if request.user.profile.avatar %}
+                <img src="{{request.user.profile.avatar.url}}">
+                <p class="mt-1">¿Borrar? <input type="checkbox" id="avatar-clear" name="avatar-clear" /></p>
+              {% else %}
+                <i class="fas fa-user mr-4"></i>
+              {% endif %}
+            </div>
+
+            <div class="row">
+            
+              <!-- Formulario -->
+              <div class="col-md-12">
+                <h2 class="mb-3 text-center"><b>Perfil</b></h2>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Subir Foto</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" name="avatar" class="custom-file-input" id="id_avatar"
+                      aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="id_avatar">Seleccionar</label>
+                  </div>
+                </div>
+
+                <div class="md-form">
+                  <i class="fas fa-user prefix"></i>
+                  {{form.name}}
+                  <label for="{{form.name.id_for_label}}">Nombre(s)</label>
+                </div>
+
+                <div class="md-form">
+                  <i class="fas fa-arrow-circle-right prefix"></i>
+                  {{form.lastname}}
+                  <label for="{{form.lastname.id_for_label}}">Apellidos</label>
+                </div>
+
+                <div class="md-form">
+                  <i class="fas fa-phone prefix"></i>
+                  {{ form.phone }}
+                  <label for="{{form.phone.id_for_label}}">Teléfono</label>
+                </div>
+
+                <div class="md-form">
+                  <i class="fas fa-id-card prefix"></i>
+                  {{ form.identity }}
+                  <label for="{{form.identity.id_for_label}}">Identidad</label>
+                </div>
+
+                <div class="md-form">
+                  <i class="fas fa-map-marked-alt prefix"></i>
+                  {{ form.address }}
+                  <label for="{{form.address.id_for_label}}">Dirección</label>
+                </div>
+
+                <div class="md-form">
+                  <i class="fas fa-at prefix"></i>
+                  <input type="email" value="{{request.user.email}}" class="form-control mt-3" id="email" readonly/>
+                  <label for="email">Correo</label>
+                </div>
+                
+                
+                <br/>
+                <p> Si deseas editar tu email haz click <a href="{% url 'profile_email' %}">aquí</a>. </p>
+                <p> Para cambiar la contraseña haz click <a href="{% url 'password_change' %}">aquí</a>. </p>
+                
+
+                <button type="submit" class="btn peach-gradient btn-rounded waves-effect mx-auto d-block">
+                  Actualizar
+                </button> 
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

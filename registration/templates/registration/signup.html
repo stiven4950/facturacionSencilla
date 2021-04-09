@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Registro{% endblock %}
+{% block section %}
+
+  <style>.errorlist{color:red;}</style>
+    <div class="container">
+      <div class="row mt-3">
+
+        <div class="col-md-6 mx-auto mb-5 register">
+
+          <div class="float-circle d-block mx-auto"><img src="{% static 'core/img/logo.png' %}"/></div>
+
+            <form action="" method="post" id="login-form">{% csrf_token %}
+            
+              <h2 class="mb-5 text-center"><b>Registrarse</b></h2>
+              
+                <div class="md-form">
+                  <i class="fas fa-user prefix"></i>
+                  {{form.username}}
+                  <label for="{{form.username.id_for_label}}">Nombre de usuario</label>
+                </div>
+                
+                <div class="md-form">
+                  <i class="fas fa-at prefix"></i>
+                  {{form.email}}
+                  <label for="{{form.email.id_for_label}}" data-error="Correo inválido">Correo</label>
+                </div>
+
+                <div class="md-form">
+                  <i class="fas fa-lock prefix"></i>
+                  {{ form.password1 }}
+                  <label for="{{form.password1.id_for_label}}" data-error="Contraseña inválida">Contraseña</label>
+                </div>
+                
+                <div class="md-form">
+                  <i class="fas fa-angle-double-right prefix"></i>
+                  {{ form.password2 }}
+                  <label for="{{form.password2.id_for_label}}" data-error="Contraseña inválida">Confirmar contraseña</label>
+                </div>
+                
+              <p>
+                <button type="submit" class="btn peach-gradient btn-rounded waves-effect mx-auto d-block">Acceder</button>
+              </p>
+            </form>
+
+          <p style="text-align:center;"> ¿Ya tienes una cuenta?</p>
+          <button type="button" onclick="window.location.href='{% url 'login' %}'" class="btn btn-outline-amber darken-3 btn-rounded waves-effect mx-auto d-block">
+            Inicia Sesión
+          </button>
+
+        </div>
+
+
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+
+<script>
+  $(document).ready(function(){
+    $('#id_username').removeClass('mb-2');
+  });
+  
+</script>
+{% endblock %}

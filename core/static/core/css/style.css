@@ -1,0 +1,371 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #fff;
+}
+.menu-bar{
+    display:none;
+}
+
+header{
+    width: 100%;
+    display: block;
+}
+
+header nav{
+    background-color: #fff;
+    z-index: 1000;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0px 3px 20px #ccc;
+}
+
+.brand{
+    width: 10em;
+    display: block;
+    margin-right: auto;
+    float: left;
+}
+
+.brand img{
+    height: 65px;
+}
+
+header nav ul{
+    display: block;
+    list-style: none;
+    float: right;
+    padding: 0px 15px;
+    margin-bottom: 0px !important;
+}
+
+header nav ul li{
+    display: inline-block;
+    position: relative;
+}
+
+header nav ul .items:hover{
+    background-color: #ff8000;
+    color: #000;
+}
+
+header nav ul li a{
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+}
+
+header nav ul li a:hover{
+    color: #ff8000;
+}
+
+header nav ul li a i{
+    margin-right: 10px;
+}
+
+header nav ul .submenu a .menu-display{
+    position: relative;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+header nav ul li .children{
+    display: none;
+    background-color: rgba(255, 255, 255);
+    position: absolute;
+    width: 150%;
+    z-index: 1000;
+    box-shadow: 0px 0px 5px rgb(206, 205, 205);
+}
+
+header nav ul li:hover .children{
+    display: block;
+}
+
+header nav ul li .children li{
+    display:block;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255, 0.5);
+}
+
+header nav ul li .children li a{
+    display: block;
+}
+
+header nav ul li .children li a i{
+    float: right;
+    position: relative;
+    top: 8px;
+    margin-right: 0;
+    margin-left: 10px;
+    font-size: 5px;
+}
+
+@media screen and (max-width:800px){
+    body{
+        padding-top: 75px;
+    }
+
+    .menu-bar{
+        display: block;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        background-color: #ff8000;
+    }
+
+    .menu-bar .btn-menu{
+        display: block;
+        padding: 20px;
+        color: #fff;
+        overflow: hidden;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .menu-bar i{
+        float: right;
+        font-size: 35px;
+    }
+
+    header nav{
+        width: 70%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        margin: 0;
+        overflow: scroll;
+        box-shadow: 0px 10px 10px #000;
+    }
+
+    header nav ul{
+        float: left;
+        width: 100%;
+    }
+
+    header nav ul li{
+        display: block;
+        border-bottom: 1px solid rgba(255,255,255, 0.5);
+    }
+
+    header nav ul li a{
+        display: block;
+    }
+
+    header nav ul li .children{
+        width: 100%;
+        position: relative;
+    }
+
+    header nav ul li:hover .children{
+        display: none;
+    }
+
+    header nav ul li .children li a{
+        margin-left: 20px;
+    }
+
+    header nav ul .menu-display{
+        float: right;
+    }
+    .brand{
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+    }
+    .brand img{
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+
+        height: 65px;
+    }
+}
+
+.active-link{
+    color:#ff8000;
+    border-bottom: 2px solid #ff8000;
+}
+
+section{
+    clear: both;
+}
+
+.btn-rounded{
+    border-radius: 20px;
+}
+.btn-rounded:hover{
+    color:#fff !important;
+    background-color: #ff8000 !important;
+}
+
+/* CONFIGURACIONES PARA EL FORMULARIO DE INICIO DE SESIÓN */
+.float-circle{
+    width: 7.25em;
+    height: 7.25em;
+    border-radius: 50%;
+    position: relative;
+    top: -3.5em;
+    background-color: #fff;
+    box-shadow: 0px 3px 10px #ccc;
+}
+
+.vertical-center{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.float-circle img{
+    /* margin-top: 0.8em;*/
+    height: 5.25em; 
+    position: relative;
+
+}
+
+.float-circle i{
+    margin-left: 0.25em;
+    margin-top: 0.1em;
+    font-size: 5.25em;
+    color:#ff8000;
+}
+
+h2{
+    color: gray;
+}
+
+form input[type=text]:focus:not([readonly]), 
+form input[type=password]:focus:not([readonly]), 
+form input[type=email]:focus:not([readonly]) {
+    border-bottom: 1px solid #ff8000 !important;
+    -webkit-box-shadow: 0 1px 0 0 #ff8000 !important;
+    box-shadow: 0 1px 0 0 #ff8000 !important;
+}
+  
+form label{
+    color: #ccc;
+}
+form label.active{
+      color: #ff8000 !important;
+}
+
+form .prefix.active{
+    color: #ff8000 !important;
+}
+
+form .prefix{
+    color: #ccc;
+}
+
+/* Registration */
+
+.register{
+    border-radius: 20px;
+    box-shadow: 0px 3px 20px #ccc;
+    padding: 0em 4em 1em 4em;
+    margin: 4rem auto;
+}
+
+.invoice{
+    border-radius: 10px;
+    box-shadow: 0px 3px 20px #ccc;
+    padding: 4em 3em;
+}
+
+
+
+/* CONFIGURACIÓN DEL INPUT  DE CANTIDAD */
+
+.number-input input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    }
+    
+    .number-input input[type=number]::-webkit-inner-spin-button,
+    .number-input input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    }
+    
+    .number-input {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    
+    .number-input button {
+        -webkit-appearance: none;
+        background-color: rgba(255, 128, 0, .1);
+        border: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin: 0;
+        position: relative;
+        display: block;
+        padding: 1.2em;
+        outline: none;
+    }
+    
+    .number-input button:before,
+    .number-input button:after {
+        display: inline-block;
+        position: absolute;
+        content: '';
+        height: 2px;
+        transform: translate(-50%, -50%);
+    }
+    
+    .number-input button.plus:after {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+    
+    .number-input input[type=number] {
+        text-align: center;
+    }
+    
+    .number-input.number-input {
+        border: 1px solid #ced4da;
+        width: 10rem;
+        border-radius: .25rem;
+    }
+    
+    .number-input.number-input button {
+        width: 2.6rem;
+        height: .7rem;
+    }
+    
+    .number-input.number-input button.minus {
+        padding-left: 10px;
+    }
+    
+    .number-input.number-input button:before,
+    .number-input.number-input button:after {
+        width: .7rem;
+        background-color: #495057;
+    }
+    
+    .number-input.number-input input[type=number] {
+        max-width: 4rem;
+        padding: .5rem;
+        border: 1px solid #ced4da;
+        border-width: 0 1px;
+        font-size: 1rem;
+        height: 2rem;
+        color: #495057;
+    }
+    
+    @media not all and (min-resolution:.001dpcm) {
+            @supports (-webkit-appearance: none) and (stroke-color:transparent) {
+            
+            .number-input.def-number-input.safari_only button:before,
+            .number-input.def-number-input.safari_only button:after {
+                margin-top: -.3rem;
+            }
+        }
+    }

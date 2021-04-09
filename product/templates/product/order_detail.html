@@ -1,0 +1,80 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Detalle Factura{% endblock %}
+
+{% block section %}
+
+    <section class="page-section cta my-4">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-xl-8 mx-auto invoice">
+                <div class="row my-3">
+                    {% load static %}
+                    <div class="col-1"><img src="{% static 'core/img/logo.png' %}" height="40px"/></div>
+                    
+                    <div class="col-3"><h2>Factura</h2></div>
+                    <div class="col">
+                        <h4 class="section-heading" style="text-align:right;">
+                            <span class="section-heading-upper">{{order.start_date|date:"SHORT_DATE_FORMAT"}} --  {{order.start_date|date:"TIME_FORMAT"}}</span>
+                        </h4>
+                    </div>
+                </div>
+                
+                <div class="cta-innerv rounded">
+                    
+                    <p class="mb-3">
+                        <b>Código de Referencia:</b> {{ order.ref_code }}
+                    </p>
+                
+                    <p class="mb-0">
+                        <b>Nombre:</b> {{user.name}} {{user.lastname}}
+                    </p>
+                    <p class="mb-0">
+                        <b>Identidad:</b> {{user.identity}}
+                    </p>
+                    <p class="mb-0">
+                        <b>Teléfono:</b> {{user.phone}}
+                    </p>
+                    <p class="mb-3">
+                        <b>Dirección:</b> {{user.address}}
+                    </p>
+
+                    <p class="mb-0 mbt">
+
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr class="grey text-white">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Total Ítem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in order.items.all %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td class="d-flex justify-content-start">{{item.name}}</td>
+                                    <td><b>$ </b>{{item.price}}</td>
+                                    <td>{{item.quantity}}</td>
+                                    <td><b>$ </b>{{item.get_total_item_price}}</td>
+                                </tr>
+                            {% endfor %}
+                                <tr>
+                                    <td colspan="4">
+                                        <span class="section-heading-under" style="text-align: right;"><h5>Total a pagar: </h5></span>
+                                    </td>
+
+                                    <td><h5><b>$ {{order.global_price}}</b></h5></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>
+
+              </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

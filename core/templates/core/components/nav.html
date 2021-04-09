@@ -1,0 +1,31 @@
+{% load static %}
+<div class="menu-bar">
+    <a class="btn-menu" href="#"><i class="fas fa-bars"></i>Facturación</a>
+</div>
+
+<nav>
+    <div class="brand d-block">
+        <a href="{% url 'core:home' %}"><img src="{% static 'core/img/logo.png' %}" class="d-block mx-auto"/></a>
+    </div>
+
+    <ul>
+        <li> <a href="{% url 'core:home' %}" class="{% if request.path == '/' %}active-link{% endif %}"><i class="fas fa-home"></i>Inicio</a></li>
+        {% if request.user.is_authenticated %}
+            <li> <a href="{% url 'profile' %}" class="{% if request.path == '/accounts/profile/' %}active-link{% endif %}"><i class="fas fa-user"></i>Perfil</a></li>
+            <li> <a href="{% url 'product:order' %}" class="{% if request.path == '/order/' %}active-link{% endif %}"><i class="fas fa-shopping-cart"></i>Facturar</a></li>
+            <li>
+                <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Salir</a>
+            </li>
+        {% else %}
+            {% url 'login' as login %}
+            {% if request.path != login %}
+                <li>
+                    <button type="button" onclick="window.location.href='{% url 'login' %}'" class="btn peach-gradient btn-rounded waves-effect mx-auto d-block">
+                        <b>Iniciar Sesión</b>
+                    </button>
+                </li>
+            {% endif %}
+        {% endif %}
+
+    </ul>
+</nav>

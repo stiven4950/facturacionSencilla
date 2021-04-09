@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+
+  <head>
+    <title> {% block title%}{% endblock %} | Facturación</title>
+    {% include 'core/components/head.html' %}
+
+    {% block extra_head %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}"/>
+  </head>
+
+  <body>
+  
+    <header>
+      {% include 'core/components/nav.html' %}
+    </header>
+
+    <div class="mt-1 pt-1">
+      {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+      {% endif %}
+    </div>
+
+    <section>
+      {% block section %}{% endblock %}
+    </section>
+    
+    <footer class="">
+      
+	  </footer>
+    
+    {% include 'core/components/scripts.html' %}
+      <script src="{% static 'core/js/main.js' %}"></script>
+    {% block extra_scripts %}{% endblock%}
+
+  </body>
+
+</html>
